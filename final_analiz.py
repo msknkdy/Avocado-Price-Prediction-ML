@@ -79,6 +79,7 @@ plt.xlabel('Actual Price ($)')
 plt.ylabel('Predicted Price ($)')
 plt.legend()
 plt.tight_layout()
+plt.savefig('figure1_actual_vs_predicted.png', dpi=300)
 plt.show()
 
 plt.figure(figsize=(10, 6), num=2)
@@ -88,6 +89,7 @@ plt.title('Figure 2: Distribution of Residuals (Error Analysis)', fontsize=14, f
 plt.xlabel('Error Amount')
 plt.ylabel('Frequency')
 plt.tight_layout()
+plt.savefig('figure2_residuals.png', dpi=300)
 plt.show()
 
 plt.figure(figsize=(10, 6), num=3)
@@ -98,6 +100,7 @@ feature_importance_df = feature_importance_df.sort_values(by='Importance', ascen
 sns.barplot(x='Importance', y='Feature', data=feature_importance_df, palette='viridis')
 plt.title('Figure 3: Top 10 Feature Importances (Random Forest)', fontsize=14, fontweight='bold')
 plt.tight_layout()
+plt.savefig('figure3_feature_importance.png', dpi=300)
 plt.show()
 
 plt.figure(figsize=(12, 8), num=4)
@@ -105,12 +108,14 @@ numeric_df = df.select_dtypes(include=[np.number]).drop(['Unnamed: 0'], axis=1, 
 sns.heatmap(numeric_df.corr(), annot=True, cmap='coolwarm', fmt='.2f', square=True)
 plt.title('Figure 4: Correlation Heatmap of Numerical Features', fontsize=14, fontweight='bold')
 plt.tight_layout()
+plt.savefig('figure4_correlation_heatmap.png', dpi=300)
 plt.show()
 
 plt.figure(figsize=(8, 6), num=5)
 sns.boxplot(x='type', y='AveragePrice', data=df, palette='magma')
 plt.title('Figure 5: Average Price Distribution by Avocado Type', fontsize=14, fontweight='bold')
 plt.tight_layout()
+plt.savefig('figure5_price_boxplot.png', dpi=300)
 plt.show()
 
 plt.figure(figsize=(10, 6), num=6)
@@ -118,5 +123,5 @@ sns.regplot(x='Total Volume', y='AveragePrice', data=df.sample(2000),
             scatter_kws={'alpha':0.3, 'color':'#BE6EE0'}, line_kws={'color':'red'})
 plt.title('Figure 6: Total Volume vs Average Price Trend', fontsize=14, fontweight='bold')
 plt.tight_layout()
-plt.savefig('figure1_actual_vs_predicted.png', dpi=300)
+plt.savefig('figure6_volume_price_trend.png', dpi=300)
 plt.show()
